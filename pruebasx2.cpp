@@ -14,12 +14,19 @@ int main()
         texturas.loadFromFile("pokeball.png");
         shape.setTexture(&texturas,1);
         int acum=0;
+        int aux=1;
     char dir='W';
      while (window.isOpen()){
         sf::Event event;
         while (window.pollEvent(event)){
             if (event.type == sf::Event::Closed)
                 window.close();
+        }
+        //ultimo avance*
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::L) || aux>0){
+            Enemy a1;
+            aux*=-1;
+            a1.Movimiento();
         }
         window.clear();
         window.draw(shape);
