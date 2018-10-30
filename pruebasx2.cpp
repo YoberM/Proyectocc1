@@ -3,20 +3,27 @@
 #include "Enemy.h"
 #define ventanax 640
 #define ventanay 640
-#define tamper 40 
+#define tamper 10 
+//g++ pruebasx2.cpp -o test -lsfml-graphics -lsfml-window -lsfml-system Enemy.cpp
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(ventanax, ventanay), "SFML works!");
     sf::RectangleShape shape(sf::Vector2f(tamper,tamper));
+    sf::RectangleShape fondo(sf::Vector2f(ventanax,ventanay));
     sf::CircleShape ward(2.f);
     ward.setFillColor(sf::Color::Red);
         sf::Texture texturas;
         texturas.loadFromFile("pokeball.png");
+        fondo.setFillColor(sf::Color::Blue);
         shape.setTexture(&texturas,1);
         int acum=0;
-        int aux=1;
+        int aux=0;
     char dir='W';
+        Enemy a1;
      while (window.isOpen()){
+        window.clear();
+        window.draw(fondo);
         sf::Event event;
         while (window.pollEvent(event)){
             if (event.type == sf::Event::Closed)
@@ -24,11 +31,14 @@ int main()
         }
         //ultimo avance*
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::L) || aux>0){
-            Enemy a1;
-            aux*=-1;
-            a1.Movimiento();
+            aux=1;
         }
-        window.clear();
+        if(aux){
+            a1.PosicionPer(shape.getPosition().x,shape.getPosition().y);
+            a1.Movimiento();
+            window.draw((a1.entidad));
+
+        }
         window.draw(shape);
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)&& shape.getPosition().x<=ventanax-tamper){
             shape.move(sf::Vector2f(0.1,0));
