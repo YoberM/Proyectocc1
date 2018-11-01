@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Enemy.h"
 #include <SFML/Graphics.hpp>
-#define tamenemy 50
+#define tamenemy 30
 #define velenemy 0.09
 
 Enemy::Enemy(float _x,float _y){

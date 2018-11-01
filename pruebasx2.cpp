@@ -1,9 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Enemy.h"
+#include "Disparo.h"
 #define ventanax 640
 #define ventanay 640
-#define tamper 10 
+#define tamper 30 
 //g++ pruebasx2.cpp -o test -lsfml-graphics -lsfml-window -lsfml-system Enemy.cpp
 
 int main()
@@ -11,7 +12,8 @@ int main()
     sf::RenderWindow window(sf::VideoMode(ventanax, ventanay), "SFML works!");
     sf::RectangleShape shape(sf::Vector2f(tamper,tamper));
     sf::RectangleShape fondo(sf::Vector2f(ventanax,ventanay));
-    sf::CircleShape ward(2.f);
+    window.setVerticalSyncEnabled(1);
+    sf::CircleShape ward(2.f);//no sirve pero lo uso como ejemplo
     ward.setFillColor(sf::Color::Red);
         sf::Texture texturas;
         texturas.loadFromFile("pokeball.png");
@@ -19,8 +21,10 @@ int main()
         shape.setTexture(&texturas,1);
         int acum=0;
         int aux=0;
+        bool aux2=1;
     char dir='W';
         Enemy a1;
+        Disparo d1;
      while (window.isOpen()){
         window.clear();
         window.draw(fondo);
@@ -40,6 +44,7 @@ int main()
 
         }
         window.draw(shape);
+        //Movimiento del personaje
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)&& shape.getPosition().x<=ventanax-tamper){
             shape.move(sf::Vector2f(0.1,0));
             dir='D';
@@ -57,6 +62,15 @@ int main()
             dir='S';
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)) return 0;
+        //Disparo
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::F)){
+            aux2=!aux2;
+        }
+        if(aux2){
+            d1.Movimiento(dir);
+            window.draw((d1.bala));}
+        else    {d1.PosicionPer(shape.getPosition().x,shape.getPosition().y,tamper);
+            aux2=0;}
         std::cout<<shape.getPosition().y<<" :: "<<shape.getPosition().x<<" :: "<<dir<<std::endl;
         window.display();
     }
