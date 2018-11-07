@@ -1,2 +1,0 @@
-# Proyectocc1
-ward
