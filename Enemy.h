@@ -5,7 +5,6 @@ class Enemy{
 	float x,y,px,py;
 public:
     sf::RectangleShape entidad;
-	Enemy();
 	Enemy(float ,float );
 	void Movimiento();
 	void PosicionPer(float , float);//Posicion del personaje no del enemigo

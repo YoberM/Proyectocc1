@@ -6,8 +6,8 @@ class Disparo{
 	char direccion;
 public:
     sf::RectangleShape bala;
-	Disparo();
-	void Movimiento(char);
-	void PosicionPer(float,float,float);
+	Disparo(float,float);
+	void Movimiento();
+	void PosicionPer(float,float,float,char);
 };
 #endif 

@@ -2,9 +2,9 @@
 #include "Enemy.h"
 #include <SFML/Graphics.hpp>
 #define tamenemy 30
-#define velenemy 0.09
+#define velenemy 0.70
 
-Enemy::Enemy(float _x,float _y){
+Enemy::Enemy(float _x = 0.0 ,float _y = 0.0){
 	x=_x;
 	y=_y;
 	entidad.setSize(sf::Vector2f(tamenemy,tamenemy));
@@ -12,11 +12,7 @@ Enemy::Enemy(float _x,float _y){
 
 }
 
-Enemy::Enemy(){
-	x=0; y=0;
-	entidad.setSize(sf::Vector2f(tamenemy,tamenemy));
-    entidad.setFillColor(sf::Color::Green);
-}
+
 
 void Enemy::Movimiento(){
 	std::cout<<"1 ";
