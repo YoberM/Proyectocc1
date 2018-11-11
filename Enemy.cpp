@@ -1,15 +1,28 @@
 #include <iostream>
 #include "Enemy.h"
-#include <SFML/Graphics.hpp>
 #define tamenemy 30
 #define velenemy 0.70
 
-Enemy::Enemy(float _x = 0.0 ,float _y = 0.0){
+
+Enemy::Enemy(){
+	srand(time(NULL));
+	int a=rand()%2,b=rand()%2;
+	entidad.setPosition(sf::Vector2f(a*640-tamenemy*!a,b*640-tamenemy*!b));
+	x=a*640-tamenemy*!a;
+	y=b*640-tamenemy*!b;
+	entidad.setSize(sf::Vector2f(tamenemy,tamenemy));
+    texturaenemy.loadFromFile("Mina.png");
+    entidad.setTexture(&texturaenemy,1);
+    std::cout<<"|"<<a<<":"<<b<<"|";std::cin>>b;
+}
+
+
+Enemy::Enemy(float _x,float _y){
 	x=_x;
 	y=_y;
 	entidad.setSize(sf::Vector2f(tamenemy,tamenemy));
-            (entidad).setFillColor(sf::Color::Green);
-
+    texturaenemy.loadFromFile("Mina.png");
+    entidad.setTexture(&texturaenemy,1);
 }
 
 
