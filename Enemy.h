@@ -12,5 +12,7 @@ public:
 	Enemy();
 	void Movimiento();
 	void PosicionPer(float , float);//Posicion del personaje no del enemigo
+	bool Colision(float);
+
 };
 #endif 

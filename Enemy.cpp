@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Enemy.h"
+#include <math.h>
 #define tamenemy 30
 #define velenemy 0.70
 
@@ -13,7 +14,7 @@ Enemy::Enemy(){
 	entidad.setSize(sf::Vector2f(tamenemy,tamenemy));
     texturaenemy.loadFromFile("Mina.png");
     entidad.setTexture(&texturaenemy,1);
-    std::cout<<"|"<<a<<":"<<b<<"|";std::cin>>b;
+    std::cout<<"|"<<a<<":"<<b<<"|";
 }
 
 
@@ -25,16 +26,26 @@ Enemy::Enemy(float _x,float _y){
     entidad.setTexture(&texturaenemy,1);
 }
 
+bool Enemy::Colision(float tamper){
+	float re=tamenemy/2;
+	float rp=tamper/2;
+	float dx=abs(x-px);
+	float dy=abs(y-py);
+	if(((dx-(re-rp))&&(dx-(re-rp)))>=0) return 0;
+	else return 1;
+}
 
 
 void Enemy::Movimiento(){
 	std::cout<<"1 ";
 	float ax,ay;
+	if(!Colision(30)){
 	if(px-x>0)ax=velenemy;else ax=-velenemy;
 	if(py-y>0)ay=velenemy;else ay=-velenemy;
     entidad.move(sf::Vector2f(ax,ay));
-    std::cout<<"("<<entidad.getPosition().x<<" "<<entidad.getPosition().y<<") ";
+    std::cout<<"X("<<entidad.getPosition().x<<" "<<entidad.getPosition().y<<") ";
     x+=ax;y+=ay;
+    }
 }
 
 void Enemy::PosicionPer(float ex,float ey){
@@ -42,5 +53,3 @@ void Enemy::PosicionPer(float ex,float ey){
 	px=ex;
 	py=ey;
 }
-
-
