@@ -31,7 +31,8 @@ bool Enemy::Colision(float tamper){
 	float rp=tamper/2;
 	float dx=abs(x-px);
 	float dy=abs(y-py);
-	if(((dx-(re-rp))&&(dx-(re-rp)))>=0) return 0;
+	std::cout<<re<<":"<<rp<<"::::"<<dx<<":"<<dy;
+	if((dx && dy)>=0) return 0;
 	else return 1;
 }
 
