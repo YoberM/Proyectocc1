@@ -7,7 +7,9 @@
 
 Enemy::Enemy(){
 	srand(time(NULL));
-	int a=rand()%2,b=rand()%2;
+	int a=0,b=0;
+	a=rand()%2;
+	b=rand()%2;
 	entidad.setPosition(sf::Vector2f(a*640-tamenemy*!a,b*640-tamenemy*!b));
 	x=a*640-tamenemy*!a;
 	y=b*640-tamenemy*!b;
@@ -16,7 +18,30 @@ Enemy::Enemy(){
     entidad.setTexture(&texturaenemy,1);
     std::cout<<"|"<<a<<":"<<b<<"|";
 }
-
+/*
+bool Enemy::Colision(float tamper){
+    float x2=tamenemy/2;
+    float y2=tamenemy/2;
+    float px=tamper/2;
+    float py=tamper/2;
+	float re=tamenemy/2;
+	float rp=tamper/2;
+	float dx=fabs(x2-px);
+	float dy=fabs(y2-py);
+	std::cout<<re<<":"<<rp<<"::::"<<dx<<":"<<dy;
+	if((dx-(re-rp)) && (dy-(re-rp))>=0) return 0;
+	else return 1;
+}
+*/
+bool Enemy::Colision(float tamper){
+	if(x<=px+tamper &&
+	   x>=px && y>=py &&
+	   y<=py+tamper)return 1;
+	if(px<=x+tamper &&
+	   px>=x && py>=y &&
+	   py<y+tamper) return 1;
+	return 0;
+}
 
 Enemy::Enemy(float _x,float _y){
 	x=_x;
@@ -26,15 +51,6 @@ Enemy::Enemy(float _x,float _y){
     entidad.setTexture(&texturaenemy,1);
 }
 
-bool Enemy::Colision(float tamper){
-	float re=tamenemy/2;
-	float rp=tamper/2;
-	float dx=abs(x-px);
-	float dy=abs(y-py);
-	std::cout<<re<<":"<<rp<<"::::"<<dx<<":"<<dy;
-	if((dx && dy)>=0) return 0;
-	else return 1;
-}
 
 
 void Enemy::Movimiento(){
@@ -44,9 +60,9 @@ void Enemy::Movimiento(){
 	if(px-x>0)ax=velenemy;else ax=-velenemy;
 	if(py-y>0)ay=velenemy;else ay=-velenemy;
     entidad.move(sf::Vector2f(ax,ay));
-    std::cout<<"X("<<entidad.getPosition().x<<" "<<entidad.getPosition().y<<") ";
+    std::cout<<"("<<entidad.getPosition().x<<" "<<entidad.getPosition().y<<") ";
     x+=ax;y+=ay;
-    }
+	}
 }
 
 void Enemy::PosicionPer(float ex,float ey){
@@ -54,3 +70,5 @@ void Enemy::PosicionPer(float ex,float ey){
 	px=ex;
 	py=ey;
 }
+
+

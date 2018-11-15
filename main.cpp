@@ -3,11 +3,12 @@
 #include "Enemy.h"
 #include "Bala.h"
 #include "Personaje.h"
+#include "Colision.h"
 #define ventanax 640
 #define ventanay 640
 #define tamper 30.0
 #define velperso 5
-//g++ main.cpp -o test -lsfml-graphics -lsfml-window -lsfml-system Enemy.cpp Bala.cpp
+//g++ main.cpp -o test -lsfml-graphics -lsfml-window -lsfml-system Enemy.cpp Bala.cpp Colision.cpp
 
 void Boton(sf::Keyboard X){
 
@@ -20,8 +21,8 @@ int main()
     window.setVerticalSyncEnabled(1);
     window.setFramerateLimit(60);
     fondo.setFillColor(sf::Color(40,55,71,255));
-    int colorg,aux3=1;
-    int aux=0;
+    int colorg=0,aux3=1;
+    int aux=0,a=0;
     bool aux2=1;
     char dir='W';
     static int numb,nume=4;
@@ -30,22 +31,30 @@ int main()
     Personaje personaje(0,0,tamper,tamper);
      while (window.isOpen()){
         window.clear();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+            delete[] enemy;
+            delete[] bala;
+            return 0;
+        }
         window.draw(fondo);
         colorg=colorg+aux3;std::cout<<colorg;               //estetica , darle color al fondo nomas xd
         if(colorg>254 || colorg<1)aux3=-1*aux3;             //
         fondo.setFillColor(sf::Color(0,153,colorg,255));    //lo de arriba
-        personaje.Movimiento();
+        dir=personaje.Movimiento();
         window.draw(personaje.Per);
         sf::Event event;
         while (window.pollEvent(event)){
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
                 window.close();
+                delete[] enemy;
+                delete[] bala;
+            }
         }
         
         //Activar enemigos
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))aux=1;
             if(aux){
-                for(int i=0;i<nume;i++){
+                for(int i=0;i<a++/300 && i<4;i++){
                     enemy[i].PosicionPer(personaje.Per.getPosition().x,personaje.Per.getPosition().y);
                     enemy[i].Movimiento();
                     window.draw((enemy[i].entidad));
@@ -53,7 +62,6 @@ int main()
             }
 
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)) return 0;
         //Bala
         aux2=0;
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::F)||aux2==1){

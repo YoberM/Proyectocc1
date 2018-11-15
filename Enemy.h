@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 class Enemy{
-	float x,y,px,py;
 public:
+	float x,y,px,py;
     sf::RectangleShape entidad;
 	sf::Texture texturaenemy;
 	Enemy(float ,float );
@@ -13,6 +13,5 @@ public:
 	void Movimiento();
 	void PosicionPer(float , float);//Posicion del personaje no del enemigo
 	bool Colision(float);
-
 };
 #endif 
