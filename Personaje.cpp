@@ -16,24 +16,32 @@ Personaje::Personaje(float px=0,float py=0,float tampx=0,float tampy=0){
     Per.setTexture(&texturasPer[0],1);
 }
 
-void Personaje::Movimiento(){
+char Personaje::Movimiento(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)&& Per.getPosition().x<ventanax-tamx){
         Per.move(sf::Vector2f(velperso,0));
         Per.setTexture(&texturasPer[3],1);
+        x+=velperso;
+        dir='D';
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)&& Per.getPosition().x>0){
         Per.move(sf::Vector2f(-velperso,0));
         Per.setTexture(&texturasPer[1],1);
+        x-=velperso;
+        dir='A';
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && Per.getPosition().y>0){
         Per.move(sf::Vector2f(0,-velperso));
         Per.setTexture(&texturasPer[0],1);
+        y-=velperso;
+        dir='W';
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && Per.getPosition().y<ventanay-tamy){
         Per.move(sf::Vector2f(0,velperso));
         Per.setTexture(&texturasPer[2],1);
+        y+=velperso;
+        dir='S';
     } 
-
+    return dir;
 }
 
 void Disparo(){

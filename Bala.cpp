@@ -28,8 +28,8 @@ void Bala::Movimiento(){
 void Bala::PosicionPer(float ex,float ey,float tam,char dir){
 	direccion=dir;
 	std::cout<<" 3 ";
-	x=ex+tam/2;
-	y=ey+tam/2;
+	x=ex+tam/2-tambala/2;
+	y=ey+tam/2-tambala/2;
 	bala.setPosition(x,y);
 }
 

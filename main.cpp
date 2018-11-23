@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include "Enemy.h"
 #include "Bala.h"
 #include "Personaje.h"
@@ -8,7 +10,7 @@
 #define ventanay 640
 #define tamper 30.0
 #define velperso 5
-//g++ main.cpp -o test -lsfml-graphics -lsfml-window -lsfml-system Enemy.cpp Bala.cpp Colision.cpp
+//g++ main.cpp -o test -lsfml-graphics -lsfml-window -lsfml-system Enemy.cpp Bala.cpp Personaje.cpp
 
 void Boton(sf::Keyboard X){
 
@@ -25,8 +27,12 @@ int main()
     int aux=0,a=0;
     bool aux2=1;
     char dir='W';
-    static int numb,nume=4;
+    int numb=5,nume=4;
+	srand(time(NULL));
     Enemy *enemy=new Enemy[nume];     //Inicializamos las clases enemy y Bala
+    for(int i=0;i<nume;i++){
+
+    }
     Bala *bala=new Bala[5];   // lo de arriba 7u7
     Personaje personaje(0,0,tamper,tamper);
      while (window.isOpen()){
@@ -45,9 +51,9 @@ int main()
         sf::Event event;
         while (window.pollEvent(event)){
             if (event.type == sf::Event::Closed){
-                window.close();
                 delete[] enemy;
                 delete[] bala;
+                window.close();
             }
         }
         

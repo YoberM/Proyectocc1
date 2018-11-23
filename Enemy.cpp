@@ -5,11 +5,9 @@
 #define velenemy 0.70
 
 
-Enemy::Enemy(){
-	srand(time(NULL));
-	int a=0,b=0;
-	a=rand()%2;
-	b=rand()%2;
+Enemy::Enemy()
+{
+	int a=rand()%2,b=rand()%2;
 	entidad.setPosition(sf::Vector2f(a*640-tamenemy*!a,b*640-tamenemy*!b));
 	x=a*640-tamenemy*!a;
 	y=b*640-tamenemy*!b;
