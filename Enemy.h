@@ -10,6 +10,7 @@ public:
 	sf::Texture texturaenemy;
 	Enemy(float ,float );
 	Enemy();
+	void Reposicionar(float,float);
 	void Movimiento();
 	void PosicionPer(float , float);//Posicion del personaje no del enemigo
 	bool Colision(float);

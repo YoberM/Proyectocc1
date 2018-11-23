@@ -9,6 +9,7 @@ public:
     sf::RectangleShape bala;
 	Bala();
 	Bala(float,float);
+	bool Colision(float,float,float);
 	void Movimiento();
 	void PosicionPer(float,float,float,char);
 };
