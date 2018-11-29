@@ -21,14 +21,14 @@ bool Enemy::Colision(float tamper){
 	if(x<=px+tamper &&
 	   x>=px && y>=py &&
 	   y<=py+tamper)return 1;
-	if(px<=x+tamper &&
-	   px>=x && py>=y &&
-	   py<y+tamper) return 1;
 	if(x+tamenemy<=px+tamper &&
 	   x+tamenemy>=px && y>=py &&
-	   y<=py+tamper)return 1;
+	   y<py+tamper) return 1;
 	if(x<=px+tamper &&
 	   x>=px && y+tamenemy>=py &&
+	   y+tamenemy<=py+tamper)return 1;
+	if(x+tamenemy<=px+tamper &&
+	   x+tamenemy>=px && y+tamenemy>=py &&
 	   y+tamenemy<=py+tamper)return 1;
 	return 0;
 }

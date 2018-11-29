@@ -3,7 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <stdlib.h>
 #include <time.h>
-class Enemy{
+#include "Entidad.h"
+class Enemy : public Entidad
+{
 public:
 	float x,y,px,py;
     sf::RectangleShape entidad;

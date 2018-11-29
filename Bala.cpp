@@ -20,14 +20,14 @@ bool Bala::Colision(float px,float py,float tamper){
 	if(x<=px+tamper &&
 	   x>=px && y>=py &&
 	   y<=py+tamper)return 1;
-	if(px<=x+tamper &&
-	   px>=x && py>=y &&
-	   py<y+tamper) return 1;
 	if(x+tambala<=px+tamper &&
 	   x+tambala>=px && y>=py &&
-	   y<=py+tamper)return 1;
+	   y<py+tamper) return 1;
 	if(x<=px+tamper &&
 	   x>=px && y+tambala>=py &&
+	   y+tambala<=py+tamper)return 1;
+	if(x+tambala<=px+tamper &&
+	   x+tambala>=px && y+tambala>=py &&
 	   y+tambala<=py+tamper)return 1;
 	return 0;
 }
