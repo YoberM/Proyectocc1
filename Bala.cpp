@@ -5,9 +5,10 @@
 #define velbala 10
 
 Bala::Bala(){
-	x=0; y=0;
+	x=-100; y=-100;
 	bala.setSize(sf::Vector2f(tambala,tambala));
     bala.setFillColor(sf::Color(rand()%255,0,rand()%255,255));
+	bala.setPosition(x,y);
 }
 
 Bala::Bala(float _x=0, float _y=0){
@@ -37,13 +38,12 @@ void Bala::Movimiento(){
 	if(direccion=='D'){bala.move(sf::Vector2f(velbala,0)); x+=velbala;}
 	if(direccion=='W'){bala.move(sf::Vector2f(0,-velbala));y+=-velbala;}
 	if(direccion=='S'){bala.move(sf::Vector2f(0,velbala)); y+=velbala;}
-    std::cout<<"b("<<int(bala.getPosition().x)<<","<<int(bala.getPosition().y)<<")";
+    //std::cout<<"b("<<int(bala.getPosition().x)<<","<<int(bala.getPosition().y)<<")";
 
 }
 
 void Bala::PosicionPer(float ex,float ey,float tam,char dir){
 	direccion=dir;
-	std::cout<<" 3 ";
 	x=ex+tam/2-tambala/2;
 	y=ey+tam/2-tambala/2;
 	bala.setPosition(x,y);

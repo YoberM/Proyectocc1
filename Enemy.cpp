@@ -14,7 +14,7 @@ Enemy::Enemy()
 	entidad.setSize(sf::Vector2f(tamenemy,tamenemy));
     texturaenemy.loadFromFile("Mina.png");
     entidad.setTexture(&texturaenemy,1);
-    std::cout<<"|"<<a<<":"<<b<<"|";
+    //std::cout<<"|"<<a<<":"<<b<<"|";
 }
 
 bool Enemy::Colision(float tamper){
@@ -48,19 +48,19 @@ void Enemy::Reposicionar(float nx,float ny){
 }
 
 void Enemy::Movimiento(){
-	std::cout<<"1";
+	//std::cout<<"1";
 	float ax,ay;
 	//if(!Colision(30)){
 	if(px-x>0)ax=velenemy;else ax=-velenemy;
 	if(py-y>0)ay=velenemy;else ay=-velenemy;
     entidad.move(sf::Vector2f(ax,ay));
-    std::cout<<"("<<entidad.getPosition().x<<","<<entidad.getPosition().y<<")";
+    //std::cout<<"("<<entidad.getPosition().x<<","<<entidad.getPosition().y<<")";
     x+=ax;y+=ay;
 	//}
 }
 
 void Enemy::PosicionPer(float ex,float ey){
-	std::cout<<" 2 ";
+	//std::cout<<" 2 ";
 	px=ex;
 	py=ey;
 }

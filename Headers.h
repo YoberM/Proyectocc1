@@ -2,4 +2,8 @@
 #include "Entidad.h"
 #include "Bala.h"
 #include "Personaje.h"
-#include "Colision.h"
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+#include <string>

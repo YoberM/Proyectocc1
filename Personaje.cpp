@@ -16,7 +16,7 @@ Personaje::Personaje(float px=0,float py=0,float tampx=0,float tampy=0){
     Per.setTexture(&texturasPer[0],1);
 }
 
-char Personaje::Movimiento(){
+void Personaje::Movimiento(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)&& Per.getPosition().x<ventanax-tamx){
         Per.move(sf::Vector2f(velperso,0));
         Per.setTexture(&texturasPer[3],1);
@@ -41,9 +41,12 @@ char Personaje::Movimiento(){
         y+=velperso;
         dir='S';
     } 
+}
+
+char Personaje::getDir(){
     return dir;
 }
-
-void Disparo(){
-
+Personaje::~Personaje(){
+    delete[] texturasPer;
 }
+
